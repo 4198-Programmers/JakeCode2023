@@ -24,13 +24,28 @@ public class DriveTrain extends SubsystemBase {
     MotorControllerGroup LeftMotors = new MotorControllerGroup(FLMotor , BLMotor);
     MotorControllerGroup RightMotors = new MotorControllerGroup(FRMotor, BLMotor);
 
-    DifferentialDrive drive = new DifferentialDrive(LeftMotors, RightMotors);
+    DifferentialDrive allDrive = new DifferentialDrive(LeftMotors, RightMotors);
     
-    public void arcadeDrive(double xSpeed, double zRotation){
-        arcadeDrive(xSpeed, zRotation);
+    public void drive(double zRotate, double xAxis){
+        allDrive.arcadeDrive(Constants.DRIVE_SPEED * zRotate, Constants.DRIVE_SPEED * xAxis);
     }
 
-    public double getPosition(){
+    public void resetPosition(){
+        FLMEncoder.setPosition(0d);
+        FRMEncoder.setPosition(0d);
+        BLMEncoder.setPosition(0d);
+        BLMEncoder.setPosition(0d);
+    }
+
+    public double findPosition(){
+       double encCurrentPosition = Math.abs(FLMEncoder.getPosition());
+       encCurrentPosition += Math.abs(FRMEncoder.getPosition());
+       encCurrentPosition += Math.abs(BLMEncoder.getPosition());
+       encCurrentPosition += Math.abs(BRMEncoder.getPosition());
+       return encCurrentPosition /4d;
+    }
+
+    public void setPosition(int i){
 
     }
 }

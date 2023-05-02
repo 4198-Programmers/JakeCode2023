@@ -14,7 +14,10 @@ package frc.robot;
  */
 public final class Constants {
 
-    public static final int FLMOTOR_ID = 0;
-    public static final int FRMOTOR_ID = 0;
-    public static final int BRMOTOR_ID = 0;
-    public static final int BLMOTOR_ID = 0;}
+    public static final int FLMOTOR_ID = 4;
+    public static final int FRMOTOR_ID = 3;
+    public static final int BRMOTOR_ID = 1;
+    public static final int BLMOTOR_ID = 2;
+    
+    public static final double DRIVE_SPEED = .2;
+}
